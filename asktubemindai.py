@@ -2,7 +2,7 @@ import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 import re
 import streamlit as st
-from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled,VideoUnavailable,NoTranscriptFound,CouldNotRetrieveTranscript
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -30,8 +30,17 @@ def build_youtube_chain(video_id):
         )
         transcript = " ".join(chunk.text for chunk in transcript_list)
 
-    except TranscriptsDisabled:
-        return "No Transcript found!"
+    except (
+        TranscriptsDisabled,
+        VideoUnavailable,
+        NoTranscriptFound,
+        CouldNotRetrieveTranscript,
+    ):
+        return None
+    
+    except Exception:
+        # Catch anything unexpected
+        return None
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
@@ -83,7 +92,7 @@ def youtube(video_id, question, chain):
 
 st.set_page_config(page_title="YouTube RAG Chatbot", page_icon="🎥")
 
-st.title("🎥 AskTubeMind AI")
+st.title("🎥 AskTubeMind")
 
 # ---------------- Session State ----------------
 
@@ -130,7 +139,14 @@ if user_input:
             chain = build_youtube_chain(video_id)
 
             if chain is None:
-                response = "❌ Transcripts are not available for this video."
+                response = (
+                    "❌ **Unable to fetch transcript for this video.**\n\n"
+                    "Possible reasons:\n"
+                    "- Video is private or deleted\n"
+                    "- Transcripts are disabled\n"
+                    "- Invalid YouTube link or ID\n\n"
+                    "Please try another video."
+                    )
             else:
                 st.session_state.chains[video_id] = chain
                 st.session_state.current_video_id = video_id
