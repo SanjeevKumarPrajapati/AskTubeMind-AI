@@ -11,6 +11,7 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from langchain_core.runnables import RunnableParallel,RunnablePassthrough,RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 
+HF_TOKEN = st.secrets["HF_TOKEN"]
 embedding=HuggingFaceEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
 
 llm = HuggingFaceEndpoint(
