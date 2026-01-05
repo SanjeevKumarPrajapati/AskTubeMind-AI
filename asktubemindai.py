@@ -162,13 +162,6 @@ with st.sidebar:
 
     st.write("**Loaded Videos**")
     st.write(list(st.session_state.chains.keys()) or "None")
-    st.divider()
-
-    if st.button("🔄 Clear Chat"):
-        # Clear everything
-        st.session_state.messages = []
-        st.session_state.current_video_id = None
-        st.session_state.chains = {}
-        st.toast("🧹 Chat cleared ✅")
+    
 
 
