@@ -1,8 +1,15 @@
 # 🎥 AskTubeMind-AI
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://asktubemind.streamlit.app/)
+[![YouTube](https://img.shields.io/badge/YouTube-Transcript_AI-red)](https://www.youtube.com/)
+[![HugginFace API](https://img.shields.io/badge/AI-Semantic_Search-purple)](https://huggingface.co/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Active-success)]()
+
 **AskTubeMind-AI (TubeMind Ask Video)** is an **AI-powered YouTube transcript chatbot** that allows users to interact with YouTube videos using **natural language questions**.  
 Simply paste a **YouTube video link or ID**, and TubeMind automatically fetches the transcript, builds a **semantic index**, and enables **intelligent question-answering** — strictly grounded in the video’s content.
 
+---
 🚀 **Live Project:** [AskTubeMind-AI](https://asktubemind.streamlit.app/)
 ---
 
