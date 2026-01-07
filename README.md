@@ -2,7 +2,8 @@
 
 **AskTubeMind-AI (TubeMind Ask Video)** is an **AI-powered YouTube transcript chatbot** that allows users to interact with YouTube videos using **natural language questions**.  
 Simply paste a **YouTube video link or ID**, and TubeMind automatically fetches the transcript, builds a **semantic index**, and enables **intelligent question-answering** — strictly grounded in the video’s content.
-
+---
+🚀 **Live Project:** [AskTubeMind-AI](https://asktubemind.streamlit.app/)
 ---
 
 ## 🚀 Features
